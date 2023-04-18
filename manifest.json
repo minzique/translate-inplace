@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "translate-inplace",
+  "description": "Ports chromium's translation functionality to firefox",
+  "version": "0.0.1",
+  "author": "minzique",
+  "homepage_url": "https://github.com/minzique/",
+  "default_locale": "en",
+
+  "background": {
+    "scripts": ["src/background/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/content/content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "contextMenus",
+    "storage",
+    "webRequest",
+    "tabs"
+  ]
+}
